@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porsche 911 GT3 RS · 海报</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Orbitron:wght@600;900&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO / POSTER ===== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1711372791566-3ae70bbaf08b?q=80&w=2070&auto=format&fit=crop') center center / cover no-repeat;
+    filter: brightness(0.7) saturate(1.1);
+    transform: scale(1.05);
+    animation: heroZoom 12s ease-out forwards;
+  }
+  @keyframes heroZoom {
+    0%   { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.4) 40%,
+      transparent 70%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, #0a0a0a 0%, transparent 100%);
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-model {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    color: #e74c3c;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+  .hero-title .rs {
+    color: #e74c3c;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 300;
+    color: #aaa;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+
+  .hero-specs {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.1s forwards;
+  }
+  .spec-item {
+    text-align: center;
+  }
+  .spec-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1.2;
+  }
+  .spec-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.9rem 2.5rem;
+    border: 1px solid #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.3s forwards;
+  }
+  .hero-cta:hover {
+    background: #e74c3c;
+    color: #fff;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+  }
+
+  /* ===== SPECS BAR ===== */
+  .specs-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    background: #111;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .specs-bar-item {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-right: 1px solid #1a1a1a;
+  }
+  .specs-bar-item:last-child { border-right: none; }
+  .specs-bar .val {
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: block;
+    color: #e74c3c;
+  }
+  .specs-bar .lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* ===== VIDEO SECTION ===== */
+  .video-section {
+    padding: 5rem 1.5rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .video-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .video-section h2 span { color: #e74c3c; }
+  .video-section > p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #222;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    background: #000;
+  }
+  .video-wrapper video,
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    border: 2px dashed #333;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
+  }
+  .upload-area:hover {
+    border-color: #e74c3c;
+    background: rgba(0,0,0,0.7);
+  }
+  .upload-area.dragover {
+    border-color: #48dbfb;
+    background: rgba(72,219,251,0.1);
+  }
+  .upload-area.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .upload-icon {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.5;
+  }
+  .upload-area p {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  .upload-area .hint {
+    color: #555;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .upload-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.8rem;
+    border: 1px solid #e74c3c;
+    color: #fff;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .upload-btn:hover {
+    background: #e74c3c;
+  }
+  #fileInput { display: none; }
+
+  /* ===== GALLERY ===== */
+  .gallery-section {
+    padding: 0 1.5rem 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .gallery-section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+  }
+  .gallery-section h2 span { color: #e74c3c; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #1a1a1a;
+    transition: transform 0.4s, border-color 0.3s;
+    cursor: pointer;
+  }
+  .gallery-grid img:hover {
+    transform: scale(1.03);
+    border-color: #e74c3c;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 2.5rem;
+    border-top: 1px solid #111;
+    color: #444;
+    font-size: 0.75rem;
+  }
+  footer a { color: #666; text-decoration: none; }
+  footer a:hover { color: #e74c3c; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero-content { padding: 0 1.5rem; }
+    .hero-specs { gap: 1.5rem; }
+    .specs-bar { grid-template-columns: repeat(2, 1fr); }
+    .specs-bar-item:nth-child(2) { border-right: none; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid img { height: 220px; }
+  }
+  @media (max-width: 480px) {
+    .hero-title { font-size: 2.8rem; }
+    .specs-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== POSTER HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">2024 · 991.2</div>
+    <div class="hero-model">PORSCHE 911</div>
+    <h1 class="hero-title">
+      GT3<span class="rs">RS</span>
+    </h1>
+    <p class="hero-sub">Born on the track. Built for the road.</p>
+    <div class="hero-specs">
+      <div class="spec-item">
+        <span class="spec-value">4.0L</span>
+        <span class="spec-label">Boxer Engine</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">525 hp</span>
+        <span class="spec-label">@ 8,500 rpm</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">3.2 s</span>
+        <span class="spec-label">0–100 km/h</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">296 km/h</span>
+        <span class="spec-label">Top Speed</span>
+      </div>
+    </div>
+    <a class="hero-cta" href="#video">&#9660; Watch Film</a>
+  </div>
+</section>
+
+<!-- ===== SPECS BAR ===== -->
+<div class="specs-bar">
+  <div class="specs-bar-item">
+    <span class="val">4.0 L</span>
+    <span class="lbl">Displacement</span>
+  </div>
+  <div class="specs-bar-item">
+    <span class="val">525 PS</span>
+    <span class="lbl">Power Output</span>
+  </div>
+  <div class="specs-bar-item">
+    <span class="val">465 N·m</span>
+    <span class="lbl">Torque</span>
+  </div>
+  <div class="specs-bar-item">
+    <span class="val">1,450 kg</span>
+    <span class="lbl">Dry Weight</span>
+  </div>
+  <div class="specs-bar-item">
+    <span class="val">7-Speed</span>
+    <span class="lbl">PDK</span>
+  </div>
+  <div class="specs-bar-item">
+    <span class="val">DRS</span>
+    <span class="lbl">Drag Reduction</span>
+  </div>
+</div>
+
+<!-- ===== VIDEO SECTION ===== -->
+<section class="video-section" id="video">
+  <h2>Driving <span>Dynamics</span></h2>
+  <p>拖入你的视频文件或点击选择</p>
+  <div class="video-wrapper" id="videoWrapper">
+    <video id="player" controls playsinline style="display:none;"></video>
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">&#9654;</div>
+      <p>将视频文件拖到这里</p>
+      <span class="hint">支持 MP4 / WebM / MOV 格式</span>
+      <button class="upload-btn" id="chooseBtn">选择视频文件</button>
+    </div>
+    <input type="file" id="fileInput" accept="video/*">
+  </div>
+  <p style="margin-top:1rem; font-size:0.75rem; color:#555;">
+    也可以把视频文件放到这个网页旁边，用文本编辑器打开 HTML，把下面这行中的 <code style="color:#e74c3c;">你的视频.mp4</code> 改成你的文件名：
+  </p>
+  <code style="display:inline-block; margin-top:0.3rem; padding:0.4rem 1rem; background:#111; border-radius:6px; font-size:0.8rem; color:#888;">
+    &lt;source src="<span style="color:#e74c3c;">你的视频.mp4</span>" type="video/mp4"&gt;
+  </code>
+</section>
+
+<script>
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const player = document.getElementById('player');
+const wrapper = document.getElementById('videoWrapper');
+
+function loadVideo(file) {
+  if (!file || !file.type.startsWith('video/')) return;
+  const url = URL.createObjectURL(file);
+  player.src = url;
+  player.style.display = '';
+  uploadArea.classList.add('hidden');
+  player.play().catch(() => {});
+}
+
+uploadArea.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files.length) loadVideo(e.target.files[0]);
+});
+
+uploadArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadArea.classList.add('dragover');
+});
+uploadArea.addEventListener('dragleave', () => {
+  uploadArea.classList.remove('dragover');
+});
+uploadArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadArea.classList.remove('dragover');
+  if (e.dataTransfer.files.length) loadVideo(e.dataTransfer.files[0]);
+});
+</script>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery-section">
+  <h2>更多 <span>视角</span></h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1743889291827-0cade6231552?q=80&w=1200&auto=format&fit=crop" alt="Porsche GT3 RS white" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1716738687053-1fdd116d41e1?q=80&w=1200&auto=format&fit=crop" alt="Porsche 911 GT3 on track" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1760288556040-6cdf3ab6c900?q=80&w=1200&auto=format&fit=crop" alt="Porsche GT3 RS silver" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>照片来源 <a href="https://unsplash.com" target="_blank">Unsplash</a> ·
+  视频来源 <a href="https://press.porsche.com" target="_blank">Porsche Press</a></p>
+  <p style="margin-top:0.5rem;">本页面仅供展示用途 · 2026</p>
+</footer>
+
+</body>
+</html>
